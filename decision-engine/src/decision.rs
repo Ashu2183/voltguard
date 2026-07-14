@@ -1,5 +1,5 @@
 pub enum Decision {
     Allow,
-    Warning,
-    Deny,
+    Warn,
+    Block,
 }
