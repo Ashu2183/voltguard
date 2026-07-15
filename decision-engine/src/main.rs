@@ -24,7 +24,10 @@ fn main() {
         decision::Decision::Block => println!("Decision: BLOCK"),
     }
 
+    println!("Reason: Severity checked successfully");
+
     engine.add_alert(alert);
 
+    println!("Highest severity: {}", engine.highest_severity());
     println!("Stored alerts: {}", engine.alert_count());
-}
+    }

@@ -21,10 +21,24 @@ impl DecisionEngine {
     }
 
     pub fn evaluate(&self, alert: &Alert) -> Decision {
-        match alert.severity {
-            1 | 2 => Decision::Allow,
-            3 => Decision::Warn,
-            _ => Decision::Block,
+        if alert.severity >= 5 {
+            Decision::Block
+        } else if alert.severity >= 3 {
+            Decision::Warn
+        } else {
+            Decision::Allow
         }
+    }
+
+    pub fn highest_severity(&self) -> u8 {
+        let mut max = 0;
+
+        for alert in &self.alerts {
+            if alert.severity > max {
+                max = alert.severity;
+            }
+        }
+
+        max
     }
 }
