@@ -3,6 +3,7 @@ mod decision;
 mod engine;
 
 use alert::Alert;
+use decision::{decision_reason, Decision};
 use engine::DecisionEngine;
 
 fn main() {
@@ -23,7 +24,7 @@ fn main() {
         decision::Decision::Warn => println!("Decision: WARN"),
         decision::Decision::Block => println!("Decision: BLOCK"),
     }
-
+    println!("Reason: {}", decision_reason(&decision));
     println!("Reason: Severity checked successfully");
 
     engine.add_alert(alert);
