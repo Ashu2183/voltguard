@@ -31,4 +31,7 @@ fn main() {
 
     println!("Highest severity: {}", engine.highest_severity());
     println!("Stored alerts: {}", engine.alert_count());
-    }
+  
+    println!("All Alerts:");
+    engine.show_alerts();
+}

@@ -20,6 +20,12 @@ impl DecisionEngine {
         self.alerts.len()
     }
 
+    pub fn show_alerts(&self) {
+        for alert in &self.alerts {
+            println!("{:?}", alert);
+        }
+    }
+
     pub fn evaluate(&self, alert: &Alert) -> Decision {
         if alert.severity >= 5 {
             Decision::Block
