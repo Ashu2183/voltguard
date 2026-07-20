@@ -17,21 +17,21 @@ fn main() {
         message: String::from("Pump RPM exceeds safe threshold"),
     };
 
-    let decision = engine.evaluate(&alert);
+    engine.add_alert(alert);
+
+    let decision = engine.evaluate();
 
     match decision {
         decision::Decision::Allow => println!("Decision: ALLOW"),
         decision::Decision::Warn => println!("Decision: WARN"),
         decision::Decision::Block => println!("Decision: BLOCK"),
     }
-    println!("Reason: {}", decision_reason(&decision));
-    println!("Reason: Severity checked successfully");
 
-    engine.add_alert(alert);
+    println!("Reason: {}", decision_reason(&decision));
 
     println!("Highest severity: {}", engine.highest_severity());
     println!("Stored alerts: {}", engine.alert_count());
-  
+
     println!("All Alerts:");
     engine.show_alerts();
 }
